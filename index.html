@@ -6,20 +6,21 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<div id="container">
-    <h1>HNAM88</h1>
-    <label for="numsDice"># of dice: </label>
-    <input id="numsDice" type="number" min="3" max = "3" value="3">
-    <button onclick="rollDice()">Roll Dice</button>
-    <div id="diceResults"></div>
-    <div id="diceImages"></div>
-    <div id="results"></div>
-    <div id="history">
-        <h2>Previous Results</h2>
-        <ul id="historyList"></ul>
+    <div class="page-container">
+        <div id="history">
+            <h2>Previous Results</h2>
+            <ul id="historyList"></ul>
+        </div>
+        <div id="container">
+            <h1>HNAM88</h1>
+            <label for="numsDice"># of dice: </label>
+            <input id="numsDice" type="number" min="3" max="3" value="3">
+            <button>Roll Dice</button>
+            <div id="diceResults"></div>
+            <div id="diceImages"></div>
+            <div id="results"></div>
+        </div>
     </div>
-</div>
-
-<script src="index.js"></script>
+    <script src="index.js"></script> <!-- Đảm bảo tên file JavaScript đúng -->
 </body>
 </html>

@@ -1,62 +1,126 @@
-/* style.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+    /* style.css */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        min-height: 100vh;
+    }
+    
+    .page-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px; /* khoảng cách giữa history và container chính */
+    }
+    
+    #container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+    }
+    
+    #history {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        margin-top: 0;
+    }
 
-#container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
-}
+    h1 {
+        color: #333;
+    }
 
-h1 {
-    color: #333;
-}
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
 
-label {
-    font-weight: bold;
-    margin-right: 10px;
-}
+    input[type="number"] {
+        width: 50px;
+        padding: 5px;
+        margin-bottom: 20px;
+    }
 
-input[type="number"] {
-    width: 50px;
-    padding: 5px;
-    margin-bottom: 20px;
-}
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
+    button:hover {
+        background-color: #0056b3;
+    }
 
-button:hover {
-    background-color: #0056b3;
-}
+    #diceResults {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-#diceResults {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+    #diceImages img {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+
+    #results {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #007BFF;
+    }
+
+    #history {
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    #history h2 {
+        font-size: 18px;
+        color: #333;
+    }
+
+    #historyList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #historyList li {
+        background-color: #f9f9f9;
+        padding: 5px;
+        margin: 5px 0;
+        border-radius: 5px;
+    }
+/* Thêm vào file CSS của bạn */
+
+/* Animation cho kết quả xúc xắc */
+@keyframes diceRoll {
+    0% { transform: rotate(0deg); opacity: 0; }
+    100% { transform: rotate(360deg); opacity: 1; }
 }
 
 #diceImages img {
     width: 50px;
     height: 50px;
     margin: 5px;
+    animation: diceRoll 0.5s ease-out;
+}
+
+/* Animation cho kết quả Tài/Xỉu */
+@keyframes resultPop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 #results {
@@ -64,26 +128,40 @@ button:hover {
     font-size: 24px;
     font-weight: bold;
     color: #007BFF;
+    animation: resultPop 0.5s ease-out;
 }
 
-#history {
-    margin-top: 20px;
-    text-align: left;
-}
-
-#history h2 {
-    font-size: 18px;
-    color: #333;
-}
-
-#historyList {
-    list-style-type: none;
-    padding: 0;
+/* Animation cho mục lịch sử mới */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+        background-color: #e3f2fd;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        background-color: #f9f9f9;
+    }
 }
 
 #historyList li {
     background-color: #f9f9f9;
-    padding: 5px;
+    padding: 8px 12px;
     margin: 5px 0;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#historyList li:hover {
+    background-color: #e3f2fd;
+}
+
+.history-item-new {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Làm nổi bật mục mới nhất */
+.history-item-new {
+    border-left: 3px solid #007BFF;
 }
